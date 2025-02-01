@@ -1,22 +1,20 @@
 import React, { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import Company from "../services/company";
-import { useSelector } from "react-redux";
-import { RootState } from "../store";
 import { ModalDeleteComponent, ModalPutComponent, Navbar } from "../components";
 import { DeleteOutlined, EditOutlined, MoreOutlined } from "@ant-design/icons";
 import { Dropdown, Menu, Spin } from "antd";
 import { CompanyData } from "../types/type";
-
+import Company from "../services/company";
+import { useSelector } from "react-redux";
+import { RootState } from "../store";
 
 const Main: React.FC = () => {
   const [openPut, setOpenPut] = useState<boolean>(false);
   const [editData, setEditData] = useState<CompanyData>();
-
   const [openDelete, setOpenDelete] = useState<boolean>(false);
   const [deleteId, setDeleteId] = useState<string>("");
-
   const [search, setSearch] = useState<string>("");
+
   const { user } = useSelector((state: RootState) => state.auth);
 
   const handleEdit = (company: CompanyData) => {
@@ -26,7 +24,7 @@ const Main: React.FC = () => {
 
   const handleDelete = (company: CompanyData) => {
     setOpenDelete(true);
-    setDeleteId(company.id);
+    setDeleteId(company?.id ?? "");
   };
 
   const { data, isLoading, isError, refetch } = useQuery(
@@ -42,8 +40,8 @@ const Main: React.FC = () => {
       {
         key: "1",
         label: (
-          <div className="flex flex-col gap-[10px]">
-            <button onClick={() => handleEdit(company)}>
+          <div>
+            <button onClick={() => handleEdit(company)}  className="flex items-center gap-[10px]">
               <EditOutlined />
               <span>Изменить</span>
             </button>
@@ -53,8 +51,8 @@ const Main: React.FC = () => {
       {
         key: "2",
         label: (
-          <div className="flex flex-col gap-[10px] text-red-500">
-            <button onClick={() => handleDelete(company)}>
+          <div>
+            <button onClick={() => handleDelete(company)} className="flex items-center gap-[10px] text-red-500">
               <DeleteOutlined />
               <span>Удалить</span>
             </button>
@@ -63,10 +61,10 @@ const Main: React.FC = () => {
       },
     ]} />
   );
-  
 
-  if(isLoading) return <Spin />;
-  if(isError) return <h1>Произошла ошибка</h1>;
+  if (isLoading) return <div className="flex items-center justify-center" ><Spin /></div>;
+  if (isError) return <h1 className="flex items-center justify-center">Произошла ошибка</h1>;
+
 
   return (
     <>

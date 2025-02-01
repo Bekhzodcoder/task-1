@@ -68,27 +68,30 @@ const ModalComponent: React.FC<ModalComponentProps> = ({
 
   return (
     <Modal
-      title="Добавить компанию"
+      title=""
       open={open}
       onOk={handleOk}
       onCancel={handleCancel}
       okText={isLoading ? "Добавление..." : "Добавить компанию"}
       cancelText="Отмена"
       confirmLoading={isLoading}
+      className="rounded-[2px]"
     >
-      <div className="space-y-4">
-        <div className="space-y-2">
-          <label className="block text-sm font-medium">Названия компании</label>
+      <h1 className="text-2xl font-semibold mb-4 px-[20px] py-[20px]">Добавить компанию</h1>
+      <div className="space-y-4 mt-[20px] border-b border-t border-gray-300">
+        <div className="space-y-2 flex items-center justify-between px-[20px] pt-[20px]">
+          <label className="block text-[15px]">Названия компании</label>
           <Input
             value={companyName}
+            className="w-[50%] rounded-[4px]"
             onChange={(e) => setCompanyName(e.target.value)}
             placeholder="Введите названия"
             status={errorFields.company ? "error" : ""}
           />
         </div>
 
-        <div className="space-y-2">
-          <label className="block text-sm font-medium">
+        <div className="space-y-2 flex items-center justify-between px-[20px] pb-[20px]">
+          <label className="block text-[15px]">
             Количество сотрудников
           </label>
           <Input
@@ -96,6 +99,7 @@ const ModalComponent: React.FC<ModalComponentProps> = ({
             value={employeeCount}
             onChange={(e) => setEmployeeCount(Number(e.target.value))}
             placeholder="Введите количество"
+            className="w-[50%] rounded-[4px]"
             status={errorFields.count ? "error" : ""}
           />
         </div>

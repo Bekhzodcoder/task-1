@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { logoutUser } from "../slice/auth";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import ModalComponent from "./modalComponent";
+import ModalComponent from "./postModal";
 
 interface NavbarProps {
   refetch: () => void;

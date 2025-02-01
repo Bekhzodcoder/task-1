@@ -14,7 +14,7 @@ const ModalDeleteComponent: React.FC<ModalComponentProps> = ({ open, setOpen, re
     mutationFn: async () => {
       if (!user) throw new Error("Token mavjud emas!");
       return await Company.delete(
-        id,
+        String(id),
         String(user)
       );
     },
@@ -46,9 +46,9 @@ const ModalDeleteComponent: React.FC<ModalComponentProps> = ({ open, setOpen, re
       cancelText="Нет"
       confirmLoading={isLoading}
     >
-      <div className="flex items-center gap-[10px] text-[20px]">
+      <div className="flex items-center gap-[10px] text-[20px] p-[20px]">
       <InfoCircleOutlined className="text-yellow-500" />
-      <p>Вы хотите удалить?</p>
+      <p className="text-[20px]">Вы хотите удалить?</p>
       </div>
     </Modal>
   );

@@ -1,5 +1,4 @@
 import axios from "axios";
-// import toast from "react-hot-toast";
 
 const url = "http://45.138.158.137:92/api";
 export const BASE_URL = url;

@@ -1,5 +1,5 @@
 export interface CompanyData {
-  id: string;
+  id?: string;
   name: string;
   count: number;
 }
@@ -8,7 +8,8 @@ export interface ModalComponentProps {
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
   refetch: () => void;
-  id: string;
+  id?: string;
+  editData?: CompanyData;
 }
 
 export interface LoginFormData {
@@ -26,7 +27,7 @@ export interface ModalComponentProps {
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
   refetch: () => void;
-  editData: CompanyData;
+  editData?: CompanyData;
 }
 
 export interface User {

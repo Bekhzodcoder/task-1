@@ -18,7 +18,6 @@ const SignIn: React.FC = () => {
 
   const onFinish = async(values: LoginFormData) => {
     dispatch(loginUserStart());
-    console.log("Foydalanuvchi ma'lumotlari:", values);
 
     try {
         const response = await AuthService.userLogin(values);
@@ -39,40 +38,39 @@ const SignIn: React.FC = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-900 bg-opacity-50 sign">
-      <Card className="w-full max-w-md shadow-xl">
-        <h1 className="text-[36px] font-bold">Вход</h1>
+      <Card className="w-full max-w-md px-0 py-0 rounded-[6px]">
+
+        <h1 className="text-[36px] font-bold px-[20px] mb-[15px]">Вход</h1>
         <Form form={form} name="login" onFinish={onFinish} layout="vertical" size="large">
           <Form.Item
             name="login"
             label="Логин"
+            className="px-[20px]"
             rules={[{ required: true, message: "Пожалуйста, введите логин" }]}
           >
-            <Input placeholder="Введите логин" />
+            <Input placeholder="Введите логин" className="rounded-[5px]" />
           </Form.Item>
 
           <Form.Item
             name="password"
             label="Пароль"
+            className="px-[20px]"
             rules={[{ required: true, message: "Пожалуйста, введите пароль" }]}
           >
-            <Input.Password placeholder="Введите пароль" />
+            <Input.Password placeholder="Введите пароль" className="rounded-[5px]" />
           </Form.Item>
 
-          <div className="flex justify-between items-center my-[20px]">
-            <Link to="/sign-up" className="text-blue-500 hover:text-blue-600">
+          <div className="flex justify-between items-center mt-[30px] mb-[20px] px-[20px]">
+            <Link to="/sign-up" className="text-blue-500 hover:text-blue-600 text-[17px]">
               Регистрация
             </Link>
           </div>
 
-          <Form.Item>
+          <Form.Item className="flex justify-center items-center border-t-2 border-gray-300 mb-[10px]">
             <Button
               type="primary"
               htmlType="submit"
-              className="w-full"
-              style={{
-                backgroundColor: "#7CB305",
-                height: "40px",
-              }}
+              className="w-fit bg-[#7CB305] h-[40px] mt-[10px] px-[20px]"
               loading={isLoading}
             >
               Вход
