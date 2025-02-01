@@ -38,7 +38,7 @@ const SignIn: React.FC = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-900 bg-opacity-50 sign">
-      <Card className="w-full max-w-md px-0 py-0 rounded-[6px]">
+      <Card className="w-full max-w-md px-0 py-0 mx-[15px] rounded-[6px]">
 
         <h1 className="text-[36px] font-bold px-[20px] mb-[15px]">Вход</h1>
         <Form form={form} name="login" onFinish={onFinish} layout="vertical" size="large">

@@ -27,7 +27,7 @@ const Navbar: React.FC<NavbarProps> = ({ refetch }) => {
   return (
     <>
       <header className="bg-[#313131] py-[20px] px-[10px] mb-[30px]">
-        <div className="flex items-center justify-between xl:max-w-[1600px] mx-auto">
+        <div className="flex items-center justify-between gap-[20px] flex-wrap xl:max-w-[1600px] mx-auto">
           <h1 className="text-2xl font-semibold text-[#fff]">Компании</h1>
           <div className="flex items-center gap-[20px]">
             <button
