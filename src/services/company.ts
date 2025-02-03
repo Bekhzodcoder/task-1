@@ -2,15 +2,19 @@ import axios from "axios";
 import { BASE_URL } from "./api";
 import { CompanyData } from "../types/type";
 
+
+const getHeaders = (token: string) => ({
+    Authorization: `Bearer ${token}`,
+    "Content-Type": "application/json",
+});
+
+
 const Company = {
     get: async (token: string, search: string) => {
         const response = await axios.get(
             `${BASE_URL}/companies/get-all?search=${search}`,
             {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                    "Content-Type": "application/json",
-                },
+                headers: getHeaders(token),
             }
         );
         return response.data;
@@ -21,10 +25,7 @@ const Company = {
             `${BASE_URL}/companies/add`,
             data,
             {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                    "Content-Type": "application/json",
-                },
+                headers: getHeaders(token),
             }
         );
         return response.data;
@@ -34,10 +35,7 @@ const Company = {
             `${BASE_URL}/companies/update`,
                 data,
             {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                    "Content-Type": "application/json",
-                },
+                headers: getHeaders(token),
             }
         );
         return response.data;
@@ -47,10 +45,7 @@ const Company = {
         const response = await axios.delete(
           `${BASE_URL}/companies/delete/by-id`,
           {
-            headers: {
-              Authorization: `Bearer ${token}`,
-              "Content-Type": "application/json",
-            },
+            headers: getHeaders(token),
             data: id,
           }
         );

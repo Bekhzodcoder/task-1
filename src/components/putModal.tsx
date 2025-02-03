@@ -27,7 +27,7 @@ const ModalPutComponent: React.FC<ModalComponentProps> = ({
 
   const { mutate, isLoading } = useMutation({
     mutationFn: async (id: string) => {
-      if (!user) throw new Error("Token mavjud emas!");
+      if (!user) throw new Error("Токен недоступен!");
       return await Company.put( { id, name: companyName, count: Number(employeeCount) }, String(user));
     },
     onSuccess: () => {
@@ -50,7 +50,7 @@ const ModalPutComponent: React.FC<ModalComponentProps> = ({
         count: employeeCount === null || isNaN(employeeCount),
       });
 
-      message.error("Barcha maydonlarni to'ldiring!");
+      message.error("Заполните все поля!");
       return;
     }
 

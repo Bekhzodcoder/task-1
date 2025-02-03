@@ -12,7 +12,7 @@ const ModalDeleteComponent: React.FC<ModalComponentProps> = ({ open, setOpen, re
 
   const { mutate, isLoading } = useMutation({
     mutationFn: async () => {
-      if (!user) throw new Error("Token mavjud emas!");
+      if (!user) throw new Error("Токен недоступен!");
       return await Company.delete(
         String(id),
         String(user)

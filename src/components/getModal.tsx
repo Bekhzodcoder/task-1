@@ -25,7 +25,7 @@ const ModalComponent: React.FC<ModalComponentProps> = ({
   // React Query mutation
   const { mutate, isLoading } = useMutation({
     mutationFn: async () => {
-      if (!user) throw new Error("Token mavjud emas!");
+      if (!user) throw new Error("Токен недоступен!");
       return await Company.post(
         { name: companyName, count: employeeCount || 0 },
         String(user)
@@ -35,7 +35,7 @@ const ModalComponent: React.FC<ModalComponentProps> = ({
       message.success("Компания успешно добавлена!");
       setOpen(false);
       setCompanyName("");
-      setEmployeeCount(undefined); // Reset employee count to undefined
+      setEmployeeCount(undefined);
       refetch();
       setErrorFields({ company: false, count: false });
     },
@@ -55,7 +55,7 @@ const ModalComponent: React.FC<ModalComponentProps> = ({
         count: employeeCount === undefined || isNaN(employeeCount),
       });
 
-      message.error("Barcha maydonlarni to'ldiring!");
+      message.error("Заполните все поля!");
       return;
     }
 
